@@ -1,68 +1,165 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* =========================
+   RESET (Consistency)
+========================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+html,
+body {
+  height: 100%;
+}
+
+img,
+video {
+  max-width: 100%;
+  display: block;
+}
+
+/* =========================
+   DESIGN TOKENS (Scalable)
+========================= */
+:root {
+  /* Colors */
+  --bg-main: #0f172a;
+  --bg-surface: #020617;
+  --text-main: #e5e7eb;
+  --text-muted: #94a3b8;
+  --primary: #22c55e;
+  --danger: #ef4444;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+
+  /* Typography */
+  --font-main: system-ui, -apple-system, sans-serif;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.25rem;
+  --fs-xl: 2rem;
+
+  /* Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+
+  /* Effects */
+  --transition-fast: 0.2s ease;
+}
+
+/* =========================
+   BASE STYLES
+========================= */
+body {
+  font-family: var(--font-main);
+  background: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  font: inherit;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* =========================
+   LAYOUT HELPERS
+========================= */
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-lg);
+}
+
+.center-screen {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+/* =========================
+   COMPONENTS
+========================= */
+.card {
+  background: var(--bg-surface);
+  padding: var(--space-lg);
+  border-radius: var(--radius-md);
+}
+
+.btn {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #000;
+  transition: var(--transition-fast);
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+
+/* =========================
+   UTILITIES (Safe scaling)
+========================= */
+.text-center {
+  text-align: center;
+}
+.mt-sm {
+  margin-top: var(--space-sm);
+}
+.mt-md {
+  margin-top: var(--space-md);
+}
+.mt-lg {
+  margin-top: var(--space-lg);
+}
+.hidden {
+  display: none;
+}
+
+/* =========================
+   GAME-SPECIFIC (Snake ready)
+========================= */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  width: 400px;
+  aspect-ratio: 1;
+  background: #020617;
+  border-radius: var(--radius-md);
+}
+
+.cell {
+  border: 1px solid #020617;
+}
+
+.snake {
+  background: var(--primary);
+}
+
+.food {
+  background: var(--danger);
 }
