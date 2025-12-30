@@ -1,7 +1,13 @@
+import { Board } from "./components/Board";
+import { Head } from "./components/Head";
+import { Score } from "./components/Score";
+
 export default function App() {
   return (
-    <h1 className="text-4xl font-bold text-green-500">
-      Tailwind is working ✅
-    </h1>
+    <>
+      <Head />
+      <Board />
+      <Score />
+    </>
   );
 }

@@ -111,7 +111,14 @@ button {
   color: #000;
   transition: var(--transition-fast);
 }
-
+.text {
+  font-family: "Press Start 2P", monospace;
+  font-size: 2.2rem;
+  color: #00ff88;
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-shadow: 3px 3px 0 #003320, 6px 6px 0 #001a10;
+}
 .btn:hover {
   opacity: 0.9;
 }
