@@ -15,9 +15,23 @@ export const Board = () => {
             border border-slate-600
           "
         >
-          {Array.from({ length: TOTAL_CELLS }).map((_, i) => (
-            <div key={i} className="border border-slate-700" />
-          ))}
+          {Array.from({ length: TOTAL_CELLS }).map((_, i) => {
+            const row = Math.floor(i / COLS);
+            const col = i % COLS;
+
+            return (
+              <div
+                key={i}
+                className="
+                  border border-slate-700
+                  flex items-center justify-center
+                  text-[10px] text-slate-400
+                "
+              >
+                {row},{col}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
